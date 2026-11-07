@@ -1,5 +1,65 @@
-<body style="background-color: #333; text-align: center; padding: 24px;">
-<h1 style="color: white;">Hello World! 这是我的第一行代码！</h1>
-<p style="color: blue;">我是一个正在学习编程的超级天才！</p>
-<p style="color: red;">太棒了，我现在用本地电脑改代码了！</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>静夜思 | 李白</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 24px;
+      background: #202326;
+      color: #fff;
+      font-family: Georgia, "Noto Serif CJK SC", "Songti SC", serif;
+    }
+
+    .poem-card {
+      width: min(100%, 420px);
+      padding: 40px 32px;
+      border: 1px solid #62676d;
+      border-radius: 16px;
+      background: #2b2f33;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.38);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 500;
+    }
+
+    .author {
+      margin: 10px 0 24px;
+      color: #d3d5d7;
+      font-size: 15px;
+    }
+
+    .poem {
+      margin: 0;
+      font-size: 20px;
+      line-height: 2;
+    }
+  </style>
+</head>
+<body>
+  <main class="poem-card">
+    <h1>静夜思</h1>
+    <p class="author">唐 · 李白</p>
+    <p class="poem">
+      床前明月光，<br>
+      疑是地上霜。<br>
+      举头望明月，<br>
+      低头思故乡。
+    </p>
+  </main>
 </body>
+</html>
