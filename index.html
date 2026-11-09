@@ -3,72 +3,236 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>静夜思 | 李白</title>
+  <meta name="theme-color" content="#111210">
+  <title>张佳镕的运营作品集</title>
   <style>
+    :root {
+      color-scheme: dark;
+      font-family: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #111210;
+      color: #f3f1e9;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
     * {
       box-sizing: border-box;
     }
 
     body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      min-width: 320px;
       min-height: 100vh;
       margin: 0;
-      padding: 24px;
-      background: #202326;
-      color: #fff;
-      font-family: Georgia, "Noto Serif CJK SC", "Songti SC", serif;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgb(183 197 143 / 8%), transparent 48%),
+        #111210;
     }
 
-    .poem-card {
-      width: min(100%, 420px);
-      padding: 40px 32px;
-      border: 1px solid #021225;
-      border-radius: 16px;
-      background: #97b7d7;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.38);
-      text-align: center;
+    .page {
+      width: min(1200px, calc(100% - 64px));
+      margin: 0 auto;
+      padding: 88px 0 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 24px;
+      color: #a7ad95;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #c9d69f;
+      content: "";
+      box-shadow: 0 0 14px rgb(201 214 159 / 55%);
     }
 
     h1 {
+      max-width: 900px;
       margin: 0;
-      font-size: 30px;
+      font-size: clamp(42px, 7vw, 76px);
+      font-weight: 600;
+      letter-spacing: -0.055em;
+      line-height: 1.15;
+    }
+
+    .intro {
+      margin: 22px 0 0;
+      color: #92948b;
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.8;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 76px;
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      min-height: 340px;
+      flex-direction: column;
+      align-items: flex-start;
+      overflow: hidden;
+      padding: 30px;
+      border: 1px solid #30312b;
+      border-radius: 24px;
+      background: linear-gradient(145deg, #1d1f1b, #181916 72%);
+      transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
+    }
+
+    .card::after {
+      position: absolute;
+      top: -88px;
+      right: -72px;
+      width: 210px;
+      height: 210px;
+      border: 1px solid rgb(201 214 159 / 9%);
+      border-radius: 50%;
+      box-shadow: 0 0 0 24px rgb(201 214 159 / 2%), 0 0 0 48px rgb(201 214 159 / 2%);
+      content: "";
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #555b46;
+      background: linear-gradient(145deg, #22241e, #191a17 72%);
+    }
+
+    .card-number {
+      color: #a7ad95;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+    }
+
+    .card h2 {
+      max-width: 260px;
+      margin: 48px 0 38px;
+      font-size: clamp(25px, 2.7vw, 32px);
       font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 1.45;
     }
 
-    .author {
-      margin: 10px 0 24px;
-      color: #d3d5d7;
-      font-size: 15px;
+    .view-button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      gap: 18px;
+      margin-top: auto;
+      padding: 0 18px;
+      border: 1px solid #41443a;
+      border-radius: 999px;
+      background: transparent;
+      color: #e8e8de;
+      font: inherit;
+      font-size: 14px;
+      cursor: pointer;
+      transition: border-color 180ms ease, background 180ms ease;
     }
 
-    .poem {
-      margin: 0;
-      font-size: 20px;
-      line-height: 2;
+    .view-button:hover {
+      border-color: #c9d69f;
+      background: rgb(201 214 159 / 8%);
+    }
+
+    .view-button:focus-visible {
+      outline: 2px solid #c9d69f;
+      outline-offset: 4px;
+    }
+
+    .arrow {
+      color: #c9d69f;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .footer {
+      margin-top: 48px;
+      color: #6f7169;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 800px) {
+      .page {
+        width: min(640px, calc(100% - 40px));
+        padding-top: 64px;
+      }
+
+      .work-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-top: 52px;
+      }
+
+      .card {
+        min-height: 280px;
+      }
+
+      .card h2 {
+        margin: 38px 0 30px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="poem-card">
-    <h1>静夜思</h1>
-    <p class="author">唐 · 李白</p>
-    <p class="poem">
-                床前明月光，<br>
-                疑是地上霜。<br>
-                举头望明月，<br>
-                低头思故乡。
-            </p> <!-- 古诗盒子在这里盖上了！ -->
+  <main class="page">
+    <header>
+      <p class="eyebrow">运营作品集 · Portfolio</p>
+      <h1>张佳镕的运营作品集</h1>
+      <p class="intro">记录洞察、创意与增长，让每一次运营都有迹可循。</p>
+    </header>
 
-            <!-- 这是一个圆角图片 -->
-            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=500" style="border-radius: 20px; width: 300px; margin-top: 20px;">
-            <br><br>
-            
-            <!-- 这是一个赛博朋克按钮 -->
-            <button style="background-color: #06f2de; color: rgb(202, 215, 228); padding: 15px 30px; border: none; border-radius: 10px; font-size: 18px; cursor: pointer; font-weight: bold;">
-                点击我！
-            </button>
+    <section class="work-grid" aria-label="作品集项目">
+      <article class="card">
+        <span class="card-number">01 / CONTENT</span>
+        <h2>账号爆款拆解报告</h2>
+        <button class="view-button" type="button" aria-label="查看账号爆款拆解报告">
+          点击查看 <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+      </article>
+
+      <article class="card">
+        <span class="card-number">02 / CAMPAIGN</span>
+        <h2>0-1活动策划案</h2>
+        <button class="view-button" type="button" aria-label="查看0-1活动策划案">
+          点击查看 <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+      </article>
+
+      <article class="card">
+        <span class="card-number">03 / INSIGHTS</span>
+        <h2>数据分析复盘</h2>
+        <button class="view-button" type="button" aria-label="查看数据分析复盘">
+          点击查看 <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+      </article>
+    </section>
+
+    <footer class="footer">张佳镕 · 运营作品集</footer>
   </main>
 </body>
 </html>
